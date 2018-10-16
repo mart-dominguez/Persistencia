@@ -20,7 +20,7 @@ public class ProyectoActivity extends AppCompatActivity {
     private EditText txtPryNombre;
     private EditText txtPryPresup;
     private EditText txtPryHoras;
-    private String idproyecto;
+    private Integer idproyecto;
     private Boolean FLAG_ALTA=true;
 
     @Override
@@ -34,9 +34,9 @@ public class ProyectoActivity extends AppCompatActivity {
         txtPryHoras = (EditText) findViewById(R.id.pryHoras);
         Intent origen = getIntent();
 
-        idproyecto = origen.getStringExtra("ID_PROYECTO");
+        idproyecto = origen.getIntExtra("ID_PROYECTO",-1);
         Log.d("APP_PROY","CLAVE: "+idproyecto );
-        if(idproyecto!=null && idproyecto.trim().length()>0){
+        if(idproyecto>0){
             FLAG_ALTA=false;
             p = ProyectoRepository.getInstance(ProyectoActivity.this).buscarPorId(idproyecto);
             txtPryNombre.setText(p.getNombre());

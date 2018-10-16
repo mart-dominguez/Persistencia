@@ -10,24 +10,20 @@ import java.util.UUID;
 
 @Entity(tableName ="APP_PROYECTO")
 public class Proyecto {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "ID_PROYECTO")
-    private String id;
-
-    public Proyecto(){
-        this.id =UUID.randomUUID().toString();
-    }
+    private Integer id;
 
     private String nombre;
     private Double presupuesto;
     private Integer horas;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(@NonNull  String id) {
+    public void setId(@NonNull  Integer id) {
         this.id = id;
     }
 

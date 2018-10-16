@@ -18,7 +18,7 @@ public interface ProyectoDao {
         @Insert
         void crearProyectos(List<Proyecto> pryList);
         @Query("SELECT * FROM APP_PROYECTO WHERE ID_PROYECTO = :pryId")
-        Proyecto buscarPorId(String pryId);
+        Proyecto buscarPorId(Integer pryId);
         @Query("SELECT * FROM APP_PROYECTO")
         List<Proyecto> buscarTodos();
         @Update

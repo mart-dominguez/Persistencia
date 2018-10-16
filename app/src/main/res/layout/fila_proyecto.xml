@@ -25,5 +25,10 @@
             android:text="Editar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/btnEditarFilaRest"
+            android:text="Edt Rest"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
     </LinearLayout>
 </LinearLayout>

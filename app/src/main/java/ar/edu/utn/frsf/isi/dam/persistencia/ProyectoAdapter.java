@@ -49,8 +49,19 @@ public class ProyectoAdapter extends ArrayAdapter<Proyecto> {
             btnEditar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String id = (String) view.getTag();
+                    Integer id = (Integer) view.getTag();
                     Intent intent1 = new Intent(mContext,ProyectoActivity.class);
+                    intent1.putExtra("ID_PROYECTO",id);
+                    mContext.startActivity(intent1);
+                }
+            });
+            Button btnEditarRest = (Button) v.findViewById(R.id.btnEditarFilaRest);
+            btnEditarRest.setTag(p.getId());
+            btnEditarRest.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Integer id = (Integer) view.getTag();
+                    Intent intent1 = new Intent(mContext,ProyectoRestActivity.class);
                     intent1.putExtra("ID_PROYECTO",id);
                     mContext.startActivity(intent1);
                 }

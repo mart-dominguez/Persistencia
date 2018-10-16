@@ -13,6 +13,9 @@ import java.util.List;
 
 import ar.edu.utn.frsf.isi.dam.persistencia.dao.ProyectoRepository;
 import ar.edu.utn.frsf.isi.dam.persistencia.modelo.Proyecto;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ListaProyectoActivity extends AppCompatActivity {
 
@@ -41,6 +44,29 @@ public class ListaProyectoActivity extends AppCompatActivity {
         };
         Thread t1 = new Thread(r);
         t1.start();
+
+        Call<List<Proyecto>> listaAsyn =ProyectoRepository.getInstance(ListaProyectoActivity.this).getAllAsyn();
+        listaAsyn.enqueue(new Callback<List<Proyecto>>() {
+            @Override
+            public void onResponse(Call<List<Proyecto>> call, Response<List<Proyecto>> response) {
+                switch (response.code()) {
+                    case 200:
+                        List<Proyecto> data = response.body();
+                        adaptador.notifyDataSetChanged();
+                        break;
+                    case 401:
+                        break;
+                    default:
+
+                        break;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Proyecto>> call, Throwable t) {
+
+            }
+        });
 
         btnMenuInicio = (Button) findViewById(R.id.btnPrincipal);
         btnMenuInicio.setOnClickListener(new View.OnClickListener() {
